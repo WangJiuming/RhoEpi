@@ -2,10 +2,6 @@
 
 This is the open source code for RhoEpi.
 
-// <details><summary>Citation</summary>
-
-// </details>
-
 <details><summary>Table of contents</summary>
   
 - [Recent Updates](#New_Updates)
@@ -15,7 +11,6 @@ This is the open source code for RhoEpi.
   - [Input](#Inputs) 
   - [Output](#outputs) 
   - [Example](#Examples)  
-// - [Citations](#citations)
 - [License](#license)
 </details>
 
@@ -81,8 +76,6 @@ The output of the example input:
 ```
 python predict.py -i "Data/sample_seq.fasta" -m "Model/epoch=49-val_loss=0.11.ckpt"
 ```
-
-// ## Citations <a name="Citations"></a>
 
 
 ## License <a name="license"></a>
