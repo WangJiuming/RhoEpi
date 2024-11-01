@@ -12,6 +12,7 @@ This is the open source code for RhoEpi.
 - [Local Environment Setup](#Local_Environment_Setup)
 - [Usage](#usage)
   - [Input Arguments](#Arguments)
+  - [Input](#Inputs) 
   - [Output](#outputs) 
   - [Example](#Examples)  
 - [Citations](#citations)
@@ -36,6 +37,7 @@ conda env create -f RhoEpi_env.yml
 ### Input Arguments <a name="Arguments"></a>
 
 ```
+python predict.py --help
   -h, --help            show this help message and exit
   -i INPUT, --input INPUT
                         Path of the input fasta file
@@ -44,23 +46,43 @@ conda env create -f RhoEpi_env.yml
   -g GPU [GPU ...], --gpu GPU [GPU ...]
                         GPU index, default 0, 1
   -l SEQ_LEN, --seq_len SEQ_LEN
-                        Length of the input fasta sequence
+                        Length of the input fasta sequence, default 128
   -b BATCH_SIZE, --batch_size BATCH_SIZE
                         Batch size, default 16
 ```
 
+### Input <a name="Inputs"></a>
+
+The input file should be a fasta file containing RNA sequences for m6A modification prediction. 
+
+The fasta file can contain any number of RNA sequences. Each RNA sequence should have a length of exactly 128-nt. The sequence can only contain characters A, U, G, C and N.
+
+Example content:
+```
+>sequence_0
+GUGCCAAGUACCCUGCUCCAGGGCGCCUGCAGGAAUAUGGCUCCAUCUUCACGGGCGCCCAGGACCCUGGCCUGCAGAGACGCCCCCGCCACAGGAUCCAGAGCAAGCACCGCCCCCUGGACGAGCGG
+>sequence_1
+UGAAGAAGCUCUAUGACAGUGAUGUGGCCAAGGUCACCACCCUGAUUUGUCCUGAUAAAGAGAACAAGGCAUAUGUUCGACUUGCUCCUGAUUAUGAUGCUUUCGAUGUUGUAACAAAAUUGGGAUCN
+```
 
 ### Output <a name="Outputs"></a>
 
 The output file, which is a `.pickle` file of python list storing the nucleotide-level prediction scores, will be saved at `Results/`.
 
+The output of the example input:
+```
+[[0.02782030776143074, 0.02782030776143074, ..., 0.19342730939388275],    # list of 128 predicted probabilities for the first sequence
+ [0.02782030776143074, 0.02782030776143074, ..., 0.02782030776143074]]    # list of 128 predicted probabilities for the second sequence
+```
+
+
 ### Example <a name="Examples"></a>
 
 ```
-python predict.py --test_path "Data/sample_seq.fasta" --model_path "Model/epoch=49-val_loss=0.11.ckpt"
+python predict.py -i "Data/sample_seq.fasta" -m "Model/epoch=49-val_loss=0.11.ckpt"
 ```
 
-## Citations <a name="Citations"></a>
+// ## Citations <a name="Citations"></a>
 
 
 ## License <a name="license"></a>

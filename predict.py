@@ -34,7 +34,7 @@ def main():
     parser.add_argument('-i', '--input', type=str, help='Path of the input fasta file')
     parser.add_argument('-m', '--model_path', type=str, help='Path of the pretrained model')
     parser.add_argument('-g', '--gpu', nargs='+', type=int, default=[0,1], help='GPU index, default 0, 1')
-    parser.add_argument('-l', '--seq_len', default=128, type=int, help='Length of the input fasta sequence')
+    parser.add_argument('-l', '--seq_len', default=128, type=int, help='Length of the input fasta sequence, default 128')
     parser.add_argument('-b', '--batch_size', default=16, type=int, help='Batch size, default 16')
 
     args = parser.parse_args()
@@ -43,7 +43,7 @@ def main():
     ''''dir related'''
     work_base = Path('.')
 
-    test_path = Path(args.test_path)
+    test_path = Path(args.input)
     print(f'Getting testing data from: {test_path}')
 
     model_path = Path(work_base, args.model_path)
