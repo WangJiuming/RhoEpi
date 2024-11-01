@@ -2,9 +2,9 @@
 
 This is the open source code for RhoEpi.
 
-<details><summary>Citation</summary>
+// <details><summary>Citation</summary>
 
-</details>
+// </details>
 
 <details><summary>Table of contents</summary>
   
@@ -15,7 +15,7 @@ This is the open source code for RhoEpi.
   - [Input](#Inputs) 
   - [Output](#outputs) 
   - [Example](#Examples)  
-- [Citations](#citations)
+// - [Citations](#citations)
 - [License](#license)
 </details>
 
